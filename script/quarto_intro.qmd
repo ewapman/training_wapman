@@ -1,0 +1,79 @@
+---
+title: "Intro to Quarto"
+author: "Emily Wapman"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+bibliography: references.bib
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+
+
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+# Level 1 header
+
+This is plain text
+
+## Level 2 header
+
+-   asterisk for bulleted list
+
+    -   indented bullet
+
+1.  numbered list
+2.  numbered list
+
+More plain text *italics* or *italics*
+
+**bold** or **bold**
+
+```{r important r code}
+
+```
+
+```{r}
+x <- 1 + 2
+```
+
+My important result is `r x` (this is an in-line code chunk) or another `r 6*7`
+If you want text to look like code `this is code formatted`
+
+```{r}
+height_ft <- c(5.2, 6.0, 5.7)
+coef <- 3.14
+```
+
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+|      |      |      |
+|      |      |      |
+|      |      |      |
+|      |      |      |
+|      |      |      |
+
+: Table 1
+
+Here is a citation: [@oke2020]\
