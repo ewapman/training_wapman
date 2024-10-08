@@ -1,0 +1,27 @@
+---
+title: "R Practice: Tidy Data and Joins"
+author: "Emily Wapman"
+format: html
+---
+
+### Load libraries 
+```{r}
+library(readr)
+library(dplyr)
+library(here)
+library(lubridate) # for bonus question
+```
+
+### Load data
+```{r}
+#| message: false
+#| warning: false
+birds <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=53edaa7a0e083013d9bf20322db1780e")
+
+surveys <- read_csv("https://dex.edirepository.org/https%3A%2F%2Fpasta.lternet.edu%2Fpackage%2Fdata%2Feml%2Fknb-lter-cap%2F256%2F10%2Fb2466fa5cb5ed7ee1ea91398fc291c59")
+
+sites <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=81bf72420e69077097fb0790dcdc63a6")
+
+taxa <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=58f863b7e3066e68536a9cacdc7bd58e")
+```
+
