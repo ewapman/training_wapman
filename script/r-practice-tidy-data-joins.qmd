@@ -16,12 +16,73 @@ library(lubridate) # for bonus question
 ```{r}
 #| message: false
 #| warning: false
-birds <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=53edaa7a0e083013d9bf20322db1780e")
+bird_observations <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=53edaa7a0e083013d9bf20322db1780e")
 
-surveys <- read_csv("https://dex.edirepository.org/https%3A%2F%2Fpasta.lternet.edu%2Fpackage%2Fdata%2Feml%2Fknb-lter-cap%2F256%2F10%2Fb2466fa5cb5ed7ee1ea91398fc291c59")
+surveys <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=b2466fa5cb5ed7ee1ea91398fc291c59")
 
 sites <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=81bf72420e69077097fb0790dcdc63a6")
 
-taxa <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=58f863b7e3066e68536a9cacdc7bd58e")
+taxalist <- read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=58f863b7e3066e68536a9cacdc7bd58e")
 ```
+
+### Get familiar with data
+```{r}
+head(bird_observations) #primary: species + site ID + speciesID foreign: speciesID
+head(surveys) # primary: surveyID foreign: site ID
+head(sites) # primary: siteID foreign: none
+head(taxalist) # primary: species ID foreign: none
+
+summary(bird_observations) 
+summary(surveys)
+summary(sites)
+summary(taxalist)
+
+glimpse(bird_observations)
+glimpse(surveys)
+glimpse(sites)
+glimpse(taxalist)
+```
+### Create a subset of bird_observations with species id BHCO and RWBL from sites LI-W and NU-C
+```{r}
+birds_subset <- bird_observations %>% 
+  filter(species_id %in% c("BHCO", "RWBL")) %>% 
+  filter(site_id %in% c("LI-W", "NU-C"))
+
+```
+
+### Use Left Join to merge birds_subset with the tables sites 
+```{r}
+birds_left <- left_join(birds_subset, sites, by = "site_id")
+```
+
+### Use full join to merge birds_subset and sites
+```{r}
+birds_full <- full_join(birds_subset, sites, by = "site_id")
+head(birds_full, 20)
+
+```
+### Use inner_join() to merge birds_subset and taxalist
+```{r}
+birds_inner <- inner_join(birds_subset, taxalist, by = "species_id")
+```
+
+### What if you had used left_join() for this?
+```{r}
+birds_left_check <- left_join(birds_subset, taxalist, by = "species_id")
+
+```
+
+### Practice Wrangling and Joining Data
+```{r}
+bird_observations <- bird_observations %>%
+  rename(bird_obs_notes = notes)
+
+```
+
+### Create a subset with all of birds_observations, join taxalist, sites, surveys and limit to only survey_dat, common_name, park_name, bird_count, observer
+```{r}
+clean_bird_obs <- _join(bird_observations, taxalist, by = "species_id") %>% 
+  left_join(bird_)
+```
+
 
