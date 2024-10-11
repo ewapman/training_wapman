@@ -3,23 +3,75 @@ title: "R Practice: Functions"
 format: html
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+### Question 1 Function that doubles any number
 
 ```{r}
-1 + 1
+double <- function(number) {
+  number_doubled <- number * 2
+  return(number_doubled)
+}
+
+double(5)
 ```
-
-You can add options to executable code like this 
-
+### Question 2 Function that displays age
 ```{r}
-#| echo: false
-2 * 2
+exclaim_age <- function(age) {
+  return(paste("I am", age, "years old!"))
+}
+
+exclaim_age(11)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+### Questsion 3 functions with conditionals
+```{r}
+# "find_max() function" #
+find_max <- function(value_1, value_2) {
+    if(is.numeric(value_1) == FALSE | is.numeric(value_2) == FALSE) stop('Value must be a number')
+    if (value_1 > value_2) {
+        return(value_1)
+    }
+    else if (value_2 > value_1) {
+        return(value_2)
+    }
+} 
+
+find_max(1, c)
+find_max(2,1)
+
+find_max(2,1) * 2
+```
+```{r}
+# "find_max() function" #
+find_max <- function(value_1, value_2) {
+  if((value_1) == (value_2)) stop("values cannot be equal")
+    
+    if (value_1 > value_2) {
+        return(value_1)
+    }
+    else if (value_2 > value_1) {
+        return(value_2)
+    }
+}
+
+find_max(4, 4)
+```
+
+### Question 4D
+```{r}
+find_max <- function(value_1, value_2) {
+  if((value_1) == (value_2)) {
+    return(paste("shared value is", value_1))
+  }
+    
+    if (value_1 > value_2) {
+        return(value_1)
+    }
+    else if (value_2 > value_1) {
+        return(value_2)
+    }
+}
+
+find_max(4, 4)
+
+```
+
