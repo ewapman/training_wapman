@@ -43,9 +43,15 @@ unique(delta_visits_raw$Date)
 ```{r}
 delta_visits <- delta_visits_raw %>% 
   janitor::clean_names()
-colnames(delta_visit)
+colnames(delta_visits)
 colnames(delta_visits_raw)
 ```
+```{r}
+locations <- visits_long %>% 
+  distinct(restore_loc, .keep_all = TRUE) %>% 
+  select(restore_loc, latitude, longitude)
+```
+
 Transforming data from wide to long
 ```{r}
 visits_long <- delta_visit %>% 
