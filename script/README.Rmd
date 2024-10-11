@@ -1,0 +1,9 @@
+---
+title: "README"
+output: html_document
+date: "2024-10-11"
+---
+
+## NCEAS Training Course
+
+This is training data for NCEAS CoreR course October 2024.This contains qmd and data files in the scripts folder and index files in the main training_wapman folder to practice publishing to the web. The book can be found at [NCEAS Training Book](https://learning.nceas.ucsb.edu/2024-10-coreR/session_20.html). The data can be accessed from links in the book. 
